@@ -46,8 +46,11 @@ describe('CountriesService', () => {
       },
     ];
 
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    httpClientSpy.get.and.returnValue(of(expectedCountriesResponse));
+    // httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    // httpClientSpy.get.and.returnValue(of(expectedCountriesResponse));
+    httpClientSpy = jasmine.createSpyObj('HttpClient', {
+      get: of(expectedCountriesResponse),
+    });
 
     countriesService = new CountriesService(
       new DataService(httpClientSpy as any)
