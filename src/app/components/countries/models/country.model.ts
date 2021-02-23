@@ -11,7 +11,7 @@ export class Country {
     readonly region: string,
     readonly subregion: string,
     readonly capital: string,
-    readonly topLevelDomain: string,
+    readonly topLevelDomain: string[],
     readonly currencies: Currency[],
     readonly languages: Language[],
     /**
