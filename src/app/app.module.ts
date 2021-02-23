@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home/home.page';
-import { CountryCardComponent } from './components/country-card/country-card.component';
+import { CountryCardComponent } from './components/countries/country-card/country-card.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { CountriesComponent } from './components/countries/countries.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     CountryCardComponent,
     HeaderComponent,
     SearchBarComponent,
+    CountriesComponent,
   ],
   imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
