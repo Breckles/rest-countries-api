@@ -51,7 +51,11 @@ export class CountriesService {
         });
 
         this.countries = responseCountries;
-        console.log(this.countries);
+        // console.log(this.countries);
       });
+  }
+
+  public getCountries() {
+    return [...this.countries];
   }
 }
