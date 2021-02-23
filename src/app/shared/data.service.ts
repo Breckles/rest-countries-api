@@ -1,11 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Currency } from '../components/countries/models/currency.model';
+import { Language } from '../components/countries/models/language.model';
+
+export interface RestCountriesAPIResponse {
+  readonly flag: string;
+  readonly name: string;
+  readonly nativeName: string;
+  readonly alpha3Code: string;
+  readonly population: number;
+  readonly region: string;
+  readonly subregion: string;
+  readonly capital: string;
+  readonly topLevelDomain: string;
+  readonly currencies: Currency[];
+  readonly languages: Language[];
+  readonly borders: string[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private rootURL = 'https://restcountries.er/rest/v2/';
+  private rootURL = 'https://restcountries.eu/rest/v2/';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +32,7 @@ export class DataService {
    * Must not include a leading forward slash (eg. 'endpoint' and NOT
    * '/endpoint')
    */
-  public getData(apiEndPoint: string) {
-    return this.http.get(`${this.rootURL}`);
+  public getCountries(apiEndPoint: string) {
+    return this.http.get<RestCountriesAPIResponse[]>(`${this.rootURL}`);
   }
 }
