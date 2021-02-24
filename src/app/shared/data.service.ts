@@ -12,7 +12,7 @@ export interface RestCountriesAPIResponse {
   readonly region: string;
   readonly subregion: string;
   readonly capital: string;
-  readonly topLevelDomain: string;
+  readonly topLevelDomain: string[];
   readonly currencies: Currency[];
   readonly languages: Language[];
   readonly borders: string[];
@@ -33,6 +33,8 @@ export class DataService {
    * '/endpoint')
    */
   public getCountries(apiEndPoint: string) {
-    return this.http.get<RestCountriesAPIResponse[]>(`${this.rootURL}`);
+    return this.http
+      .get<RestCountriesAPIResponse[]>(`${this.rootURL}${apiEndPoint}`)
+      .toPromise();
   }
 }

@@ -1,3 +1,4 @@
+import { RestCountriesAPIResponse } from 'src/app/shared/data.service';
 import { Currency } from './currency.model';
 import { Language } from './language.model';
 
@@ -19,4 +20,41 @@ export class Country {
      */
     readonly borders: string[]
   ) {}
+
+  static convertJSONToCountry(JSONCountry: RestCountriesAPIResponse) {
+    const currencies: Currency[] = [];
+    const languages: Language[] = [];
+
+    JSONCountry.currencies.forEach((currency) => {
+      currencies.push(
+        new Currency(currency.code, currency.name, currency.symbol)
+      );
+    });
+
+    JSONCountry.languages.forEach((language) => {
+      languages.push(
+        new Language(
+          language.iso639_1,
+          language.iso639_2,
+          language.name,
+          language.nativeName
+        )
+      );
+    });
+
+    return new Country(
+      JSONCountry.flag,
+      JSONCountry.name,
+      JSONCountry.nativeName,
+      JSONCountry.alpha3Code,
+      JSONCountry.population,
+      JSONCountry.region,
+      JSONCountry.subregion,
+      JSONCountry.capital,
+      JSONCountry.topLevelDomain,
+      currencies,
+      languages,
+      JSONCountry.borders
+    );
+  }
 }

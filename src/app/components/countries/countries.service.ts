@@ -16,40 +16,15 @@ export class CountriesService {
   public countriesBehaviorSubject = new BehaviorSubject<Country[]>([]);
 
   constructor(private dataService: DataService) {
-    // get data for all countries
-    // this.dataService
-    //   .getCountries('all')
-    //   .subscribe((countries: RestCountriesAPIResponse[]) => {
-    //     const responseCountries: Country[] = [];
-    //     countries.forEach((country) => {
-    //       const currencies: Currency[] = [];
-    //       const languages: Language[] = [];
-    //       country.currencies.forEach((currency) => {
-    //         currencies.push(currency);
-    //       });
-    //       country.languages.forEach((language) => {
-    //         languages.push(language);
-    //       });
-    //       responseCountries.push(
-    //         new Country(
-    //           country.flag,
-    //           country.name,
-    //           country.nativeName,
-    //           country.alpha3Code,
-    //           country.population,
-    //           country.region,
-    //           country.subregion,
-    //           country.capital,
-    //           country.topLevelDomain,
-    //           currencies,
-    //           languages,
-    //           country.borders
-    //         )
-    //       );
-    //     });
-    //     this.countries = responseCountries;
-    //     this.countriesBehaviorSubject.next(this.countries);
+    // this.fetchAllCountries()
+    //   .then((countries: Country[]) => {
+    //     this.countries = countries;
+    //     this.countriesBehaviorSubject.next([...this.countries]);
+    //   })
+    //   .catch((error) => {
+    //     throw error;
     //   });
+
     //////////////////////////////////
     // Hardcoding data to avoid constant http requests while styling components
     // and refreshing the page
@@ -152,7 +127,20 @@ export class CountriesService {
     this.countriesBehaviorSubject.next(this.countries);
   }
 
-  // public getCountries() {
-  //   return [...this.countries];
-  // }
+  private async fetchAllCountries(): Promise<Country[]> {
+    try {
+      const restCountriesAPIResponse = await this.dataService.getCountries(
+        'all'
+      );
+      let responseCountries: Country[] = [];
+
+      restCountriesAPIResponse.forEach((country) => {
+        responseCountries.push(Country.convertJSONToCountry(country));
+      });
+
+      return responseCountries;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
