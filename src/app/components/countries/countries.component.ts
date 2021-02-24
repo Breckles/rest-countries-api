@@ -8,12 +8,13 @@ import { Country } from './models/country.model';
   styleUrls: ['./countries.component.scss'],
 })
 export class CountriesComponent implements OnInit {
-  countries: Country[] = [];
+  countries!: Country[] | null;
+
   constructor(private countriesService: CountriesService) {}
 
   ngOnInit(): void {
     this.countriesService.countriesBehaviorSubject.subscribe(
-      (countries: Country[]) => {
+      (countries: Country[] | null) => {
         this.countries = countries;
       }
     );

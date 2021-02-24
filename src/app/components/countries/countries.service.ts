@@ -12,8 +12,8 @@ import { Language } from './models/language.model';
   providedIn: 'root',
 })
 export class CountriesService {
-  private countries!: Country[];
-  public countriesBehaviorSubject = new BehaviorSubject<Country[]>([]);
+  private countries!: Country[] | null;
+  public countriesBehaviorSubject = new BehaviorSubject<Country[] | null>(null);
 
   constructor(private dataService: DataService) {
     // this.fetchAllCountries()
