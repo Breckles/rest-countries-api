@@ -15,8 +15,6 @@ export class CountriesComponent implements OnInit {
     this.countriesService.countriesBehaviorSubject.subscribe(
       (countries: Country[]) => {
         this.countries = countries;
-        console.log(countries[0]);
-        console.log(countries[1]);
       }
     );
   }

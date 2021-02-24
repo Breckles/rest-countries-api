@@ -1,0 +1,23 @@
+.countries-component-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+ul.countries-list {
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+
+  list-style-type: none;
+
+  li {
+    width: 100%;
+    height: 100%;
+
+    app-country-card {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

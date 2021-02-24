@@ -1,1 +1,14 @@
-<p>country-card works!</p>
+<div class="country-card-component-wrapper">
+  <img class="country-flag"
+       src="{{ country.flag }}"
+       alt="The flag of {{ country.name }}">
+  <section class="country-info-section">
+    <h2>{{ country.name }}</h2>
+    <ul class="country-info-list">
+      <li class="country-info-item"><span class="country-info-item-label">Population:</span>{{ country.population }}
+      </li>
+      <li class="country-info-item"><span class="country-info-item-label">Region:</span>{{ country.region }}</li>
+      <li class="country-info-item"><span class="country-info-item-label">Capital:</span>{{ country.capital }}</li>
+    </ul>
+  </section>
+</div>
