@@ -5,8 +5,6 @@ import {
   RestCountriesAPIResponse,
 } from 'src/app/shared/data.service';
 import { Country } from './models/country.model';
-import { Currency } from './models/currency.model';
-import { Language } from './models/language.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,68 +14,30 @@ export class CountriesService {
   public countriesBehaviorSubject = new BehaviorSubject<Country[] | null>(null);
 
   constructor(private dataService: DataService) {
-    // this.fetchAllCountries()
-    //   .then((countries: Country[]) => {
-    //     this.countries = countries;
-    //     this.countriesBehaviorSubject.next([...this.countries]);
-    //   })
-    //   .catch((error) => {
-    //     throw error;
-    //   });
+    this.fetchAllCountries()
+      .then((countries: Country[]) => {
+        this.countries = countries;
+        this.countriesBehaviorSubject.next([...this.countries]);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
 
-    //////////////////////////////////
+  private async fetchAllCountries(): Promise<Country[]> {
     // Hardcoding data to avoid constant http requests while styling components
     // and refreshing the page
-    let responseData = [
+    let mockJSONCountries: RestCountriesAPIResponse[] = [
       {
-        flag: 'https://restcountries.eu/data/afg.svg',
-        name: 'Afghanistan',
-        nativeName: 'افغانستان',
-        alpha3Code: 'AFG',
-        population: 27657145,
-        region: 'Asia',
-        subregion: 'Southern Asia',
-        capital: 'Kabul',
-        topLevelDomain: ['.af'],
-        currencies: [
-          {
-            code: 'AFN',
-            name: 'Afghan afghani',
-            symbol: '؋',
-          },
-        ],
-        languages: [
-          {
-            iso639_1: 'ps',
-            iso639_2: 'pus',
-            name: 'Pashto',
-            nativeName: 'پښتو',
-          },
-          {
-            iso639_1: 'uz',
-            iso639_2: 'uzb',
-            name: 'Uzbek',
-            nativeName: 'Oʻzbek',
-          },
-          {
-            iso639_1: 'tk',
-            iso639_2: 'tuk',
-            name: 'Turkmen',
-            nativeName: 'Türkmen',
-          },
-        ],
-        borders: ['IRN', 'PAK', 'TKM', 'UZB', 'TJK', 'CHN'],
-      },
-      {
-        flag: 'https://restcountries.eu/data/ala.svg',
-        name: 'Åland Islands',
-        nativeName: 'Åland',
-        alpha3Code: 'ALA',
-        population: 28875,
+        flag: 'https://restcountries.eu/data/deu.svg',
+        name: 'Germany',
+        nativeName: 'Deutschland',
+        alpha3Code: 'DEU',
+        population: 81770900,
         region: 'Europe',
-        subregion: 'Northern Europe',
-        capital: 'Mariehamn',
-        topLevelDomain: ['.ax'],
+        subregion: 'Western Europe',
+        capital: 'Berlin',
+        topLevelDomain: ['.de'],
         currencies: [
           {
             code: 'EUR',
@@ -87,60 +47,73 @@ export class CountriesService {
         ],
         languages: [
           {
-            iso639_1: 'sv',
-            iso639_2: 'swe',
-            name: 'Swedish',
-            nativeName: 'svenska',
+            iso639_1: 'de',
+            iso639_2: 'deu',
+            name: 'German',
+            nativeName: 'Deutsch',
           },
         ],
-        borders: [],
+        borders: [
+          'AUT',
+          'BEL',
+          'CZE',
+          'DNK',
+          'FRA',
+          'LUX',
+          'NLD',
+          'POL',
+          'CHE',
+        ],
+      },
+      {
+        flag: 'https://restcountries.eu/data/usa.svg',
+        name: 'United States of America',
+        nativeName: 'United States',
+        alpha3Code: 'USA',
+        population: 323947000,
+        region: 'Americas',
+        subregion: 'Northern America',
+        capital: 'Washington, D.C.',
+        topLevelDomain: ['.us'],
+        currencies: [
+          {
+            code: 'USD',
+            name: 'United States dollar',
+            symbol: '$',
+          },
+        ],
+        languages: [
+          {
+            iso639_1: 'en',
+            iso639_2: 'eng',
+            name: 'English',
+            nativeName: 'English',
+          },
+        ],
+        borders: ['CAN', 'MEX'],
       },
     ];
-    let newCountries: Country[] = [];
-    responseData.forEach((country) => {
-      const currencies: Currency[] = [];
-      const languages: Language[] = [];
-      country.currencies.forEach((currency) => {
-        currencies.push(currency);
-      });
-      country.languages.forEach((language) => {
-        languages.push(language);
-      });
-      newCountries.push(
-        new Country(
-          country.flag,
-          country.name,
-          country.nativeName,
-          country.alpha3Code,
-          country.population,
-          country.region,
-          country.subregion,
-          country.capital,
-          country.topLevelDomain,
-          currencies,
-          languages,
-          country.borders
-        )
-      );
+    let mockResponseCountries: Country[] = [];
+    mockJSONCountries.forEach((country) => {
+      mockResponseCountries.push(Country.convertJSONToCountry(country));
     });
-    this.countries = newCountries;
-    this.countriesBehaviorSubject.next(this.countries);
-  }
+    return mockResponseCountries;
+    ////////////////////////////////////////////////////////////
 
-  private async fetchAllCountries(): Promise<Country[]> {
-    try {
-      const restCountriesAPIResponse = await this.dataService.getCountries(
-        'all'
-      );
-      let responseCountries: Country[] = [];
+    // try {
+    //   const restCountriesAPIResponse = await this.dataService.getCountries(
+    //     'name/united'
+    //   );
+    //   let responseCountries: Country[] = [];
 
-      restCountriesAPIResponse.forEach((country) => {
-        responseCountries.push(Country.convertJSONToCountry(country));
-      });
+    //   restCountriesAPIResponse.forEach((country) => {
+    //     responseCountries.push(Country.convertJSONToCountry(country));
+    //   });
+    //   console.log(responseCountries);
 
-      return responseCountries;
-    } catch (error) {
-      throw error;
-    }
+    //   return responseCountries;
+    // } catch (error) {
+    //   throw error;
+    // }
   }
 }
