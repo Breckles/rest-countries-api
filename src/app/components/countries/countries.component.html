@@ -1,11 +1,7 @@
 <div class="countries-component-wrapper">
-  <ul class="countries-list"
-      *ngIf="countries !== null; else loading">
+  <ul class="countries-list">
     <li *ngFor="let country of countries">
       <app-country-card [country]="country"></app-country-card>
     </li>
   </ul>
-  <ng-template #loading>
-    <div class="loading-wrapper">Loading</div>
-  </ng-template>
 </div>

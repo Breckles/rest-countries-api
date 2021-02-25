@@ -1,3 +1,8 @@
 <div id="homePageWrapper">
-  <app-countries></app-countries>
+  <app-search-bar (onSearch)="filterCountriesByName($event)"></app-search-bar>
+  <app-countries *ngIf="countries; else loading"
+                 [countries]="countries"></app-countries>
+  <ng-template #loading>
+    <div class="loading-wrapper">Loading</div>
+  </ng-template>
 </div>

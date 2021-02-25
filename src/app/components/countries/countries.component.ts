@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CountriesService } from './countries.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Country } from './models/country.model';
 
 @Component({
@@ -8,13 +7,14 @@ import { Country } from './models/country.model';
   styleUrls: ['./countries.component.scss'],
 })
 export class CountriesComponent implements OnInit {
-  countries!: Country[];
+  @Input()
+  public countries!: Country[];
 
-  constructor(private countriesService: CountriesService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.countriesService.countriesSubject.subscribe((countries: Country[]) => {
-      this.countries = countries;
-    });
+    if (!this.countries) {
+      throw new Error("An argument for 'countries' must be provided");
+    }
   }
 }

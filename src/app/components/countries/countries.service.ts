@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
 import {
   DataService,
   RestCountriesAPIResponse,
@@ -10,23 +9,18 @@ import { Country } from './models/country.model';
   providedIn: 'root',
 })
 export class CountriesService {
-  private countries!: Country[] | null;
-  public countriesSubject = new Subject<Country[]>();
+  private countries!: Country[];
 
-  constructor(private dataService: DataService) {
-    this.fetchAllCountries()
-      .then((countries: Country[]) => {
-        this.countries = countries;
-        this.countriesSubject.next([...this.countries]);
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }
+  constructor(private dataService: DataService) {}
 
-  private async fetchAllCountries(): Promise<Country[]> {
+  public async getAllCountries() {
+    if (this.countries) {
+      return [...this.countries];
+    }
+
     // Hardcoding data to avoid constant http requests while styling components
     // and refreshing the page
+    /////////////////////////////////
     let mockJSONCountries: RestCountriesAPIResponse[] = [
       {
         flag: 'https://restcountries.eu/data/deu.svg',
@@ -97,23 +91,33 @@ export class CountriesService {
     mockJSONCountries.forEach((country) => {
       mockResponseCountries.push(Country.convertJSONToCountry(country));
     });
-    return mockResponseCountries;
+    this.countries = mockResponseCountries;
+    return [...this.countries];
     ////////////////////////////////////////////////////////////
 
     // try {
+    //   let responseCountries: Country[] = [];
+
     //   const restCountriesAPIResponse = await this.dataService.getCountries(
     //     'all?fields=flag;name;nativeName;alpha3Code;population;region;subregion;capital;topLevelDomain;currencies;languages'
     //   );
-    //   let responseCountries: Country[] = [];
 
     //   restCountriesAPIResponse.forEach((country) => {
     //     responseCountries.push(Country.convertJSONToCountry(country));
     //   });
-    //   console.log(responseCountries);
 
-    //   return responseCountries;
+    //   this.countries = responseCountries;
+
+    //   return [...this.countries];
     // } catch (error) {
     //   throw error;
     // }
+  }
+
+  public async getCountriesByName(name: string) {
+    const lowerCaseName = name.toLowerCase();
+    return this.countries.filter((country: Country) =>
+      country.name.toLowerCase().includes(lowerCaseName)
+    );
   }
 }

@@ -15,10 +15,11 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(event: Event) {
+    event.preventDefault();
     if (this.searchText.valid) {
       this.onSearch.next(this.searchText.value);
-      this.searchText.reset();
+      // this.searchText.reset();
     }
   }
 }
