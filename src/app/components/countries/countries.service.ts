@@ -102,7 +102,7 @@ export class CountriesService {
 
     // try {
     //   const restCountriesAPIResponse = await this.dataService.getCountries(
-    //     'name/united'
+    //     'all?fields=flag;name;nativeName;alpha3Code;population;region;subregion;capital;topLevelDomain;currencies;languages'
     //   );
     //   let responseCountries: Country[] = [];
 
