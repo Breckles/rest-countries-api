@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import {
   DataService,
   RestCountriesAPIResponse,
@@ -11,13 +11,13 @@ import { Country } from './models/country.model';
 })
 export class CountriesService {
   private countries!: Country[] | null;
-  public countriesBehaviorSubject = new BehaviorSubject<Country[] | null>(null);
+  public countriesSubject = new Subject<Country[]>();
 
   constructor(private dataService: DataService) {
     this.fetchAllCountries()
       .then((countries: Country[]) => {
         this.countries = countries;
-        this.countriesBehaviorSubject.next([...this.countries]);
+        this.countriesSubject.next([...this.countries]);
       })
       .catch((error) => {
         throw error;

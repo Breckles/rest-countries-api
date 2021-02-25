@@ -13,7 +13,7 @@ export class CountriesComponent implements OnInit {
   constructor(private countriesService: CountriesService) {}
 
   ngOnInit(): void {
-    this.countriesService.countriesBehaviorSubject.subscribe(
+    this.countriesService.countriesSubject.subscribe(
       (countries: Country[] | null) => {
         this.countries = countries;
       }
