@@ -1,7 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountriesComponent } from './countries.component';
+import { CountriesService } from './countries.service';
 
 describe('CountriesComponent', () => {
   let component: CountriesComponent;
@@ -10,7 +10,6 @@ describe('CountriesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CountriesComponent],
-      imports: [HttpClientModule],
     }).compileComponents();
   });
 
@@ -20,7 +19,7 @@ describe('CountriesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });

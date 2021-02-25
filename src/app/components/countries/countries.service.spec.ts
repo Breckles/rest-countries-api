@@ -118,7 +118,6 @@ describe('CountriesService', () => {
       ),
     ];
     countriesService.countriesSubject.subscribe((countries: Country[]) => {
-      console.log(countries);
       expect(countries).toEqual(expectedCountries);
     });
   });
