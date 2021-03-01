@@ -19,12 +19,10 @@ export class HomePageComponent implements OnInit {
   }
 
   filterCountriesByName(name: string) {
-    this.countriesService
-      .getCountriesByName(name)
-      .then((countries: Country[] | undefined) => {
-        if (countries) {
-          this.countries = countries;
-        }
-      });
+    this.countries = this.countriesService.getCountriesByName(name);
+  }
+
+  filterCountriesByRegion(region: string) {
+    this.countries = this.countriesService.getCountriesByRegion(region);
   }
 }

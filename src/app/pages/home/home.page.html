@@ -1,7 +1,11 @@
 <div id="homePageWrapper">
-  <app-search-bar (onSearch)="filterCountriesByName($event)"></app-search-bar>
-  <app-countries *ngIf="countries; else loading"
-                 [countries]="countries"></app-countries>
+  <ng-container *ngIf="countries; else loading">
+    <app-search-bar (onSearch)="filterCountriesByName($event)"></app-search-bar>
+    <app-filter-select [filterField]="'Region'"
+                       [filterFieldOptions]="['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']"
+                       (filterFieldOptionSelected)="filterCountriesByRegion($event)"></app-filter-select>
+    <app-countries [countries]="countries"></app-countries>
+  </ng-container>
   <ng-template #loading>
     <div class="loading-wrapper">Loading</div>
   </ng-template>

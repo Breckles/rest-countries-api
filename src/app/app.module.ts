@@ -10,6 +10,7 @@ import { CountryCardComponent } from './components/countries/country-card/countr
 import { HeaderComponent } from './components/header/header.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CountriesComponent } from './components/countries/countries.component';
+import { FilterSelectComponent } from './components/filter-select/filter-select.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CountriesComponent } from './components/countries/countries.component';
     HeaderComponent,
     SearchBarComponent,
     CountriesComponent,
+    FilterSelectComponent,
   ],
   imports: [
     BrowserModule,

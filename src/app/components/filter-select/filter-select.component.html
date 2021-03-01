@@ -1,0 +1,42 @@
+<div class="filter-select-component-wrapper">
+  <div class="select"
+       (click)="toggleOptionsList($event)"
+       #select>
+    Filter by {{ filterField }}
+    <div class="select-down-arrow">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 320 512">
+        <path
+              d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+      </svg>
+    </div>
+  </div>
+  <ul class="select-options-list"
+      *ngIf="listOpen">
+    <li class="select-option"
+        [ngClass]="{'active' : activeOption === 'all'}"
+        (click)="onSelectFilterField('all')">
+      All
+      <div class="checkmark">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 512 512">
+          <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+        </svg>
+      </div>
+    </li>
+    <li class="select-option"
+        *ngFor="let option of filterFieldOptions"
+        [ngClass]="{'active' : activeOption === option}"
+        (click)="onSelectFilterField(option)">
+      {{ option }}
+      <div class="checkmark">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 512 512">
+          <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+        </svg>
+      </div>
+    </li>
+  </ul>
+</div>

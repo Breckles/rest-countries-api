@@ -1,0 +1,75 @@
+.filter-select-component-wrapper {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--filter-select-background-color);
+  border-radius: 1rem;
+}
+
+.select {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding: 0 2rem;
+
+  .select-down-arrow {
+    height: 100%;
+    margin-left: auto;
+
+    svg {
+      display: block;
+      width: 15px;
+      height: 100%;
+
+      path {
+        fill: var(--app-text-color);
+      }
+    }
+  }
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+ul.select-options-list {
+  position: relative;
+  top: 5px;
+  list-style-type: none;
+  width: 100%;
+  padding: 1rem 1rem 1rem 2rem;
+
+  border-radius: 1rem;
+  background-color: var(--filter-select-background-color);
+
+  li.select-option {
+    display: flex;
+    margin: 1rem;
+
+    .checkmark {
+      display: none;
+      margin-left: auto;
+
+      svg {
+        display: block;
+        width: 15px;
+        height: 100%;
+
+        path {
+          fill: var(--app-text-color);
+        }
+      }
+    }
+  }
+
+  li.select-option:hover {
+    cursor: pointer;
+  }
+
+  li.select-option.active {
+    .checkmark {
+      display: block;
+    }
+  }
+}

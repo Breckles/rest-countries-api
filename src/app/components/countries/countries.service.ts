@@ -114,10 +114,17 @@ export class CountriesService {
     // }
   }
 
-  public async getCountriesByName(name: string) {
+  public getCountriesByName(name: string): Country[] {
     const lowerCaseName = name.toLowerCase();
     return this.countries.filter((country: Country) =>
       country.name.toLowerCase().includes(lowerCaseName)
+    );
+  }
+
+  public getCountriesByRegion(region: string): Country[] {
+    const lowerCaseRegion = region.toLowerCase();
+    return this.countries.filter(
+      (country: Country) => country.region.toLowerCase() === lowerCaseRegion
     );
   }
 }
