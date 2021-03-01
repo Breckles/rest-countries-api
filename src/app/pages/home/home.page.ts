@@ -23,6 +23,12 @@ export class HomePageComponent implements OnInit {
   }
 
   filterCountriesByRegion(region: string) {
-    this.countries = this.countriesService.getCountriesByRegion(region);
+    if (region === 'all') {
+      this.countriesService.getAllCountries().then((countries: Country[]) => {
+        this.countries = countries;
+      });
+    } else {
+      this.countries = this.countriesService.getCountriesByRegion(region);
+    }
   }
 }
