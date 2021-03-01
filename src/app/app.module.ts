@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { FilterSelectComponent } from './components/filter-select/filter-select.component';
+import { CountryDetailComponent } from './components/countries/country-detail/country-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FilterSelectComponent } from './components/filter-select/filter-select.
     SearchBarComponent,
     CountriesComponent,
     FilterSelectComponent,
+    CountryDetailComponent,
   ],
   imports: [
     BrowserModule,
