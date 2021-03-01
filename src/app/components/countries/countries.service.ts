@@ -127,4 +127,66 @@ export class CountriesService {
       (country: Country) => country.region.toLowerCase() === lowerCaseRegion
     );
   }
+
+  public async getCountryByAlpha3Code(
+    alpha3Code: string
+  ): Promise<Country | undefined> {
+    if (this.countries !== undefined) {
+      return this.countries.find(
+        (country: Country) => country.alpha3Code === alpha3Code
+      );
+    }
+
+    // for testing
+    let mockJSONCountries: RestCountriesAPIResponse[] = [
+      {
+        flag: 'https://restcountries.eu/data/deu.svg',
+        name: 'Germany',
+        nativeName: 'Deutschland',
+        alpha3Code: 'DEU',
+        population: 81770900,
+        region: 'Europe',
+        subregion: 'Western Europe',
+        capital: 'Berlin',
+        topLevelDomain: ['.de'],
+        currencies: [
+          {
+            code: 'EUR',
+            name: 'Euro',
+            symbol: '€',
+          },
+        ],
+        languages: [
+          {
+            iso639_1: 'de',
+            iso639_2: 'deu',
+            name: 'German',
+            nativeName: 'Deutsch',
+          },
+        ],
+        borders: [
+          'AUT',
+          'BEL',
+          'CZE',
+          'DNK',
+          'FRA',
+          'LUX',
+          'NLD',
+          'POL',
+          'CHE',
+        ],
+      },
+    ];
+    // for testing
+    return mockJSONCountries[0];
+
+    // return this.dataService
+    //   .getCountries(`alpha?codes=${alpha3Code}`)
+    //   .then((response: RestCountriesAPIResponse[]) => {
+    //     return Country.convertJSONToCountry(response[0]);
+    //   })
+    //   .catch((_error) => {
+    //     return undefined;
+    //   });
+  }
 }

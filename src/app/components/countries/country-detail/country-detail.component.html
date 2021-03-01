@@ -1,1 +1,12 @@
-<p>country-detail works!</p>
+<!-- current route: root/countries/:alpha3Code -->
+
+<div class="country-detail-component-wrapper">
+  <ng-container *ngIf="country">
+    <div>{{ country.name }}</div>
+    <div>{{ country.alpha3Code }}</div>
+    <div>{{ country.region }}</div>
+    <div>{{ country.flag }}</div>
+    <div>{{ country.languages }}</div>
+    <div>{{ country.topLevelDomain }}</div>
+  </ng-container>
+</div>

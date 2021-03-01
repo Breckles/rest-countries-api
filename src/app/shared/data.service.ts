@@ -30,7 +30,7 @@ export class DataService {
    *
    * @param {string} apiEndPoint The API endpoint to append to the API root URL.
    * Must not include a leading forward slash (eg. 'endpoint' and NOT
-   * '/endpoint')
+   * '/endpoint'). Current root URL is https://restcountries.eu/rest/v2/
    */
   public getCountries(apiEndPoint: string) {
     return this.http

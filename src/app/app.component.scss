@@ -37,3 +37,8 @@ header {
     height: 100%;
   }
 }
+
+main {
+  width: 100%;
+  height: calc(100% - 8rem);
+}
