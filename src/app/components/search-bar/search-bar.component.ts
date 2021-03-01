@@ -19,7 +19,10 @@ export class SearchBarComponent implements OnInit {
     event.preventDefault();
     if (this.searchText.valid) {
       this.onSearch.next(this.searchText.value);
-      // this.searchText.reset();
     }
+  }
+
+  reset() {
+    this.searchText.reset();
   }
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountriesService } from 'src/app/components/countries/countries.service';
 import { Country } from 'src/app/components/countries/models/country.model';
+import { FilterSelectComponent } from 'src/app/components/filter-select/filter-select.component';
+import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +10,11 @@ import { Country } from 'src/app/components/countries/models/country.model';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePageComponent implements OnInit {
+  @ViewChild(FilterSelectComponent)
+  regionFilterSelectComponent!: FilterSelectComponent;
+  @ViewChild(SearchBarComponent)
+  searchBarComponent!: SearchBarComponent;
+
   countries!: Country[];
 
   constructor(private countriesService: CountriesService) {}
@@ -20,6 +27,7 @@ export class HomePageComponent implements OnInit {
 
   filterCountriesByName(name: string) {
     this.countries = this.countriesService.getCountriesByName(name);
+    this.regionFilterSelectComponent.reset();
   }
 
   filterCountriesByRegion(region: string) {
@@ -30,5 +38,7 @@ export class HomePageComponent implements OnInit {
     } else {
       this.countries = this.countriesService.getCountriesByRegion(region);
     }
+
+    this.searchBarComponent.reset();
   }
 }

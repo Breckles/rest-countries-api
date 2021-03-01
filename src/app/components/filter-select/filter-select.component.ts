@@ -11,7 +11,7 @@ export class FilterSelectComponent implements OnInit {
   @Input()
   filterFieldOptions!: string[];
   @Output()
-  filterFieldOptionSelected = new EventEmitter();
+  filterFieldOptionSelected = new EventEmitter<string>();
 
   activeOption = 'all';
   listOpen = false;
@@ -42,5 +42,10 @@ export class FilterSelectComponent implements OnInit {
       this.activeOption = filterFieldOption;
       this.filterFieldOptionSelected.emit(this.activeOption);
     }
+  }
+
+  reset() {
+    this.activeOption = 'all';
+    this.listOpen = false;
   }
 }
