@@ -32,15 +32,30 @@ export class FilterSelectComponent implements OnInit {
     });
   }
 
-  toggleOptionsList(event: Event) {
+  clickToggleOptionsList(event: Event) {
     event.stopPropagation();
     this.listOpen = !this.listOpen;
   }
 
-  onSelectFilterField(filterFieldOption: string) {
+  keypressToggleOptionsList(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.clickToggleOptionsList(event);
+    }
+  }
+
+  onClickSelectFilterFieldOption(filterFieldOption: string) {
     if (filterFieldOption !== this.activeOption) {
       this.activeOption = filterFieldOption;
       this.filterFieldOptionSelected.emit(this.activeOption);
+    }
+  }
+
+  onKeydownSelectFilterFieldOption(
+    event: KeyboardEvent,
+    filterFieldOption: string
+  ) {
+    if (event.key === 'Enter') {
+      this.onClickSelectFilterFieldOption(filterFieldOption);
     }
   }
 

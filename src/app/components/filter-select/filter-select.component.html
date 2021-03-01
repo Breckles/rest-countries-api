@@ -1,6 +1,8 @@
 <div class="filter-select-component-wrapper">
   <div class="select"
-       (click)="toggleOptionsList($event)"
+       tabindex="0"
+       (click)="clickToggleOptionsList($event)"
+       (keypress)="keypressToggleOptionsList($event)"
        #select>
     Filter by {{ filterField }}
     <div class="select-down-arrow">
@@ -14,8 +16,10 @@
   <ul class="select-options-list"
       *ngIf="listOpen">
     <li class="select-option"
+        tabindex="0"
         [ngClass]="{'active' : activeOption === 'all'}"
-        (click)="onSelectFilterField('all')">
+        (click)="onClickSelectFilterFieldOption('all')"
+        (keydown)="onKeydownSelectFilterFieldOption($event, 'all')">
       All
       <div class="checkmark">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +30,11 @@
       </div>
     </li>
     <li class="select-option"
+        tabindex="0"
         *ngFor="let option of filterFieldOptions"
         [ngClass]="{'active' : activeOption === option}"
-        (click)="onSelectFilterField(option)">
+        (click)="onClickSelectFilterFieldOption(option)"
+        (keydown)="onKeydownSelectFilterFieldOption($event, option)">
       {{ option }}
       <div class="checkmark">
         <svg xmlns="http://www.w3.org/2000/svg"
