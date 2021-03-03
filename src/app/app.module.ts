@@ -13,6 +13,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CountriesComponent } from './components/countries/countries.component';
 import { FilterSelectComponent } from './components/filter-select/filter-select.component';
 import { CountryDetailComponent } from './components/countries/country-detail/country-detail.component';
+import { NameListPipe } from './shared/pipes/list/name-list.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CountryDetailComponent } from './components/countries/country-detail/co
     CountriesComponent,
     FilterSelectComponent,
     CountryDetailComponent,
+    NameListPipe,
   ],
   imports: [
     BrowserModule,

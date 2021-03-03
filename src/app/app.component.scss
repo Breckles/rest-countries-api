@@ -1,6 +1,7 @@
 #appComponentWrapper.dark-mode {
   --app-background-color: hsl(207, 26%, 17%);
   --app-text-color: hsl(0, 0%, 100%);
+  --app-button-background-color: hsl(209, 23%, 22%);
   --header-background-color: hsl(209, 23%, 22%);
   --search-bar-background-color: hsl(209, 23%, 22%);
   --filter-select-background-color: hsl(209, 23%, 22%);
@@ -11,9 +12,10 @@
 #appComponentWrapper.light-mode {
   --app-background-color: hsl(0, 0%, 98%);
   --app-text-color: hsl(200, 15%, 8%);
+  --app-button-background-color: hsl(0, 0%, 100%);
   --header-background-color: hsl(0, 0%, 100%);
   --search-bar-background-color: hsl(0, 0%, 100%);
-  --filter-select-background-color: hsl(209, 23%, 22%);
+  --filter-select-background-color: hsl(0, 0%, 100%);
   --country-card-background-color: hsl(0, 0%, 100%);
   --input-background-color: hsl(0, 0%, 52%);
 }

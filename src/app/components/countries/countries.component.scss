@@ -14,6 +14,15 @@ ul.countries-list {
     height: 50%;
     padding: 5% 13%;
 
+    a {
+      display: block;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+
+      color: var(--app-text-color);
+    }
+
     app-country-card {
       display: block;
       width: 100%;
