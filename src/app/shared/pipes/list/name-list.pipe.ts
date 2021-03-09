@@ -10,8 +10,6 @@ export class NameListPipe implements PipeTransform {
    * @returns {string} A comma separated list containing all the 'name' properties of the objects
    */
   transform(objects: any[]): string {
-    console.log(objects);
-
-    return objects.map((object) => object.name).join();
+    return objects.map((object) => object.name).join(', ');
   }
 }

@@ -1,0 +1,45 @@
+<div class="country-detail-component-wrapper">
+
+  <ng-container *ngIf="country">
+
+    <section class="country-details-lists">
+      <ul class="country-details-list">
+        <li class="country-details-list-item"><span class="label">Native Name:
+          </span>{{ country.nativeName }}
+        </li>
+        <li class="country-details-list-item"><span class="label">Population:
+          </span>{{ country.population | number }}</li>
+        <li class="country-details-list-item"><span class="label">Region: </span>{{ country.region }}
+        </li>
+        <li class="country-details-list-item"><span class="label">Sub Region:
+          </span>{{ country.subregion }}
+        </li>
+        <li class="country-details-list-item"><span class="label">Capital: </span>{{ country.capital }}
+        </li>
+      </ul>
+      <ul class="country-details-list">
+        <li class="country-details-list-item"><span class="label">Top Level Domain:
+          </span>{{ country.topLevelDomain.join() }}
+        </li>
+        <li class="country-details-list-item"><span class="label">Currencies:
+          </span>{{ country.currencies | nameList}}
+        </li>
+        <li class="country-details-list-item"><span class="label">Languages:
+          </span>{{ country.languages | nameList}}
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-countries">
+      <h3>Border Countries:</h3>
+      <ul class="border-countries-list">
+        <li *ngFor="let borderCountry of borderCountries">
+          <a class="border-countries-link"
+             [routerLink]="['/country', borderCountry.alpha3Code]">{{ borderCountry.name }}</a>
+        </li>
+      </ul>
+    </section>
+
+  </ng-container>
+
+</div>

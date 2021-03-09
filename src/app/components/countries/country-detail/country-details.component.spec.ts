@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountryDetailComponent } from './country-detail.component';
+import { CountryDetailComponent } from './country-details.component';
 
 describe('CountryDetailComponent', () => {
   let component: CountryDetailComponent;
@@ -8,9 +8,8 @@ describe('CountryDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CountryDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [CountryDetailComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
