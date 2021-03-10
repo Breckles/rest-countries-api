@@ -31,7 +31,9 @@ export class HomePageComponent implements OnInit {
   }
 
   filterCountriesByRegion(region: string) {
-    if (region === 'all') {
+    console.log(region);
+
+    if (region === 'All') {
       this.countriesService.getAllCountries().then((countries: Country[]) => {
         this.countries = countries;
       });

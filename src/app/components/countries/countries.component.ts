@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Country } from './models/country.model';
 
 @Component({
@@ -6,19 +6,26 @@ import { Country } from './models/country.model';
   templateUrl: './countries.component.html',
   styleUrls: ['./countries.component.scss'],
 })
-export class CountriesComponent implements OnInit {
+export class CountriesComponent implements OnInit, OnChanges {
   @Input()
   public countries!: Country[];
-  public displayCountries: Country[] = [];
+  public displayCountries!: Country[];
   private displayIndex = 10;
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     if (!this.countries) {
       throw new Error("An argument for 'countries' must be provided");
     }
 
-    this.displayCountries.push(...this.countries.slice(0, this.displayIndex));
+    this.displayCountries = this.countries.slice(0, this.displayIndex);
+  }
+
+  ngOnInit(): void {
+    // if (!this.countries) {
+    //   throw new Error("An argument for 'countries' must be provided");
+    // }
+    // this.displayCountries.push(...this.countries.slice(0, this.displayIndex));
   }
 }
