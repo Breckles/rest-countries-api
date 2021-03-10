@@ -9,6 +9,8 @@ import { Country } from './models/country.model';
 export class CountriesComponent implements OnInit {
   @Input()
   public countries!: Country[];
+  public displayCountries: Country[] = [];
+  private displayIndex = 10;
 
   constructor() {}
 
@@ -16,5 +18,7 @@ export class CountriesComponent implements OnInit {
     if (!this.countries) {
       throw new Error("An argument for 'countries' must be provided");
     }
+
+    this.displayCountries.push(...this.countries.slice(0, this.displayIndex));
   }
 }

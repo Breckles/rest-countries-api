@@ -4,6 +4,10 @@
 }
 
 ul.countries-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 1fr;
+  column-gap: 5%;
   width: 100%;
   height: 100%;
 
@@ -11,8 +15,8 @@ ul.countries-list {
 
   li {
     width: 100%;
-    height: 50%;
-    padding: 5% 13%;
+    height: 1fr;
+    margin-bottom: 25%;
 
     a {
       display: block;

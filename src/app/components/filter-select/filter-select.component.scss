@@ -4,7 +4,7 @@
   height: 100%;
 
   background-color: var(--filter-select-background-color);
-  border-radius: 1rem;
+  border-radius: 5px;
 }
 
 .select {
@@ -41,8 +41,12 @@ ul.select-options-list {
   width: 100%;
   padding: 1rem 1rem 1rem 2rem;
 
-  border-radius: 1rem;
+  border-radius: 5px;
   background-color: var(--filter-select-background-color);
+  box-shadow:
+    10px 0 10px rgba(black, 0.2),
+    0 10px 10px rgba(black, 0.2),
+    -10px 0 10px rgba(black, 0.2);
 
   li.select-option {
     display: flex;
