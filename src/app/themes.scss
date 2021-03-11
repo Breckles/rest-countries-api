@@ -1,3 +1,15 @@
+// Values for theme switching transition
+.dark-theme,
+.light-theme {
+  --app-background-color-transition: all 1s ease-in-out;
+  --app-text-color-transition: all 1s ease-in-out;
+  --app-button-background-color-transition: all 1s ease-in-out;
+  --header-transition: all 1s ease-in-out;
+  --search-bar-transition: all 1s ease-in-out;
+  --filter-select-transition: all 1s ease-in-out;
+  --country-card-transition: all 1s ease-in-out;
+}
+
 .dark-theme {
   --app-font-family: 'Nunito Sans', sans-serif;
   --app-background-color: hsl(207, 26%, 17%);
@@ -7,7 +19,6 @@
   --search-bar-background-color: hsl(209, 23%, 22%);
   --filter-select-background-color: hsl(209, 23%, 22%);
   --country-card-background-color: hsl(209, 23%, 22%);
-  --input-background-color: hsl(209, 23%, 22%);
 }
 
 .light-theme {
@@ -19,5 +30,4 @@
   --search-bar-background-color: hsl(0, 0%, 100%);
   --filter-select-background-color: hsl(0, 0%, 100%);
   --country-card-background-color: hsl(0, 0%, 100%);
-  --input-background-color: hsl(0, 0%, 52%);
 }
