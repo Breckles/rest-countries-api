@@ -1,13 +1,13 @@
 // Values for theme switching transition
 .dark-theme,
 .light-theme {
-  --app-background-color-transition: all 1s ease-in-out;
-  --app-text-color-transition: all 1s ease-in-out;
-  --app-button-background-color-transition: all 1s ease-in-out;
-  --header-transition: all 1s ease-in-out;
-  --search-bar-transition: all 1s ease-in-out;
-  --filter-select-transition: all 1s ease-in-out;
-  --country-card-transition: all 1s ease-in-out;
+  --header-background-color-transition: all 700ms linear 0ms;
+  --app-background-color-transition: all 600ms linear 100ms;
+  --search-bar-background-color-transition: all 400ms linear 300ms;
+  --filter-select-background-color-transition: all 300ms linear 400ms;
+  --country-card-background-color-transition: all 600ms linear 100ms;
+  --app-text-color-transition: all 250ms linear 450ms;
+  --app-button-background-color-transition: all 500ms linear 200ms;
 }
 
 .dark-theme {

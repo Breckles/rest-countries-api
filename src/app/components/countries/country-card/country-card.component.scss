@@ -18,14 +18,23 @@ section.country-info-section {
   border-radius: 0 0 5px 5px;
   background-color: var(--country-card-background-color);
 
+  transition: var(--country-card-background-color-transition);
+
   h2 {
     font-size: 1.6rem;
     font-weight: 800;
+    color: var(--app-text-color);
+
+    transition: var(--app-text-color-transition);
   }
 
   ul.country-info-list {
     list-style-type: none;
     margin-top: 8%;
+
+    color: var(--app-text-color);
+
+    transition: var(--app-text-color-transition);
 
     li.country-info-item {
       margin-bottom: 3%;

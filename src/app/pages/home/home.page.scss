@@ -19,6 +19,13 @@
     max-width: 500px;
     height: 6rem;
     margin: 40px auto 20px 0;
+
+    border-radius: 5px;
+    box-shadow:
+      0 -0.5rem 0.5rem rgba(0, 0, 0, 0.05),
+      0.5rem 0 0.5rem rgba(0, 0, 0, 0.05),
+      0 0.5rem 0.5rem rgba(0, 0, 0, 0.05),
+      -0.5rem 0 0.5rem rgba(0, 0, 0, 0.05);
   }
 
   app-filter-select {
@@ -29,6 +36,13 @@
     max-width: 225px;
     height: 6rem;
     margin: 40px 0;
+
+    border-radius: 5px;
+    box-shadow:
+      0 -0.5rem 0.5rem rgba(0, 0, 0, 0.05),
+      0.5rem 0 0.5rem rgba(0, 0, 0, 0.05),
+      0 0.5rem 0.5rem rgba(0, 0, 0, 0.05),
+      -0.5rem 0 0.5rem rgba(0, 0, 0, 0.05);
   }
 }
 

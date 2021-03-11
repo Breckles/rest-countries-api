@@ -5,6 +5,8 @@
 
   background-color: var(--filter-select-background-color);
   border-radius: 5px;
+
+  transition: var(--filter-select-background-color-transition);
 }
 
 .select {
@@ -13,6 +15,10 @@
   height: 100%;
   align-items: center;
   padding: 0 2rem;
+
+  color: var(--app-text-color);
+
+  transition: var(--app-text-color-transition);
 
   .select-down-arrow {
     height: 100%;
@@ -25,6 +31,8 @@
 
       path {
         fill: var(--app-text-color);
+
+        transition: var(--app-text-color-transition);
       }
     }
   }
@@ -48,6 +56,8 @@ ul.select-options-list {
     0 10px 10px rgba(black, 0.2),
     -10px 0 10px rgba(black, 0.2);
 
+  transition: var(--filter-select-background-color-transition);
+
   li.select-option {
     display: flex;
     margin: 1rem;
@@ -63,6 +73,8 @@ ul.select-options-list {
 
         path {
           fill: var(--app-text-color);
+
+          transition: var(--app-text-color-transition);
         }
       }
     }

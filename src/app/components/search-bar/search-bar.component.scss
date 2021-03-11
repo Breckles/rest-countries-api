@@ -4,6 +4,8 @@
 
   background-color: var(--search-bar-background-color);
   border-radius: 5px;
+
+  transition: var(--search-bar-background-color-transition);
 }
 
 form {
@@ -30,9 +32,14 @@ input {
   font-size: 1.6rem;
   font-weight: 300;
 
+  transition: var(--search-bar-background-color-transition);
+
   &::placeholder {
     color: var(--app-text-color);
     opacity: 1;
+
+    // This does not work on firefox 86.0.1
+    transition: var(--app-text-color-transition);
   }
 }
 
@@ -49,6 +56,8 @@ button {
 
     path {
       fill: var(--app-text-color);
+
+      transition: var(--app-text-color-transition);
     }
   }
 }

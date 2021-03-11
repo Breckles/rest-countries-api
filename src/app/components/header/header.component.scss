@@ -7,6 +7,8 @@
   padding: 0 5%;
 
   background-color: var(--header-background-color);
+
+  transition: var(--header-background-color-transition);
 }
 
 h1 {
@@ -28,6 +30,8 @@ h1 {
 
       path {
         fill: var(--app-text-color);
+
+        transition: var(--app-text-color-transition);
       }
     }
   }
@@ -41,5 +45,7 @@ h1 {
     font-family: var(--app-font-family);
     font-size: 1.6rem;
     font-weight: 600;
+
+    transition: var(--app-text-color-transition);
   }
 }

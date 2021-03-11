@@ -1,7 +1,7 @@
 <div id="appComponentWrapper"
-     class="dark-theme">
+     [ngClass]="currentTheme">
   <header>
-    <app-header></app-header>
+    <app-header (onThemeChange)="changeTheme($event)"></app-header>
   </header>
   <main>
     <router-outlet></router-outlet>
