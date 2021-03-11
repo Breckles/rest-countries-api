@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   DataService,
   RestCountriesAPIResponse,
-} from 'src/app/shared/data.service';
+} from 'src/app/shared/services/data/data.service';
 import { Country } from './models/country.model';
 
 @Injectable({

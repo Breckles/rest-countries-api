@@ -1,4 +1,4 @@
-import { RestCountriesAPIResponse } from 'src/app/shared/data.service';
+import { RestCountriesAPIResponse } from 'src/app/shared/services/data/data.service';
 import { Currency } from './currency.model';
 import { Language } from './language.model';
 

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Currency } from '../components/countries/models/currency.model';
-import { Language } from '../components/countries/models/language.model';
+import { Currency } from '../../../components/countries/models/currency.model';
+import { Language } from '../../../components/countries/models/language.model';
 
 export interface RestCountriesAPIResponse {
   readonly flag: string;

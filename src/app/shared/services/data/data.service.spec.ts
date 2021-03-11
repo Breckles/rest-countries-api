@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Currency } from '../components/countries/models/currency.model';
-import { Language } from '../components/countries/models/language.model';
+import { Currency } from '../../../components/countries/models/currency.model';
+import { Language } from '../../../components/countries/models/language.model';
 
 import { DataService, RestCountriesAPIResponse } from './data.service';
 
