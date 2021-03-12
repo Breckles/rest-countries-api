@@ -1,7 +1,9 @@
 <div class="country-card-component-wrapper">
-  <img class="country-flag"
-       src="{{ country.flag }}"
-       alt="The flag of {{ country.name }}">
+  <div class="country-flag-container">
+    <img class="country-flag"
+         src="{{ country.flag }}"
+         alt="The flag of {{ country.name }}">
+  </div>
   <section class="country-info-section">
     <h2>{{ country.name }}</h2>
     <ul class="country-info-list">
