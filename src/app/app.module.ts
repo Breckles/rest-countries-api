@@ -14,7 +14,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CountriesComponent } from './components/countries/countries.component';
 import { FilterSelectComponent } from './components/filter-select/filter-select.component';
 import { CountryDetailsComponent } from './components/countries/country-detail/country-details.component';
-import { NameListPipe } from './shared/pipes/list/name-list.pipe';
+import { NameListPipe } from './shared/pipes/name-list/name-list.pipe';
 import { CountryFlagComponent } from './components/countries/country-flag/country-flag.component';
 
 @NgModule({
