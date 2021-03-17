@@ -1,6 +1,13 @@
 // Current route: root/countries/:alpha3Code
 
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { CountriesService } from '../countries.service';
 import { Country } from '../models/country.model';
 
@@ -12,6 +19,8 @@ import { Country } from '../models/country.model';
 export class CountryDetailsComponent implements OnChanges {
   @Input()
   country!: Country;
+  @ViewChild('countryCardPopupAnchor', { read: ViewContainerRef })
+  anchor!: ViewContainerRef;
 
   borderCountries!: Country[];
 

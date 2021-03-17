@@ -16,6 +16,7 @@ import { FilterSelectComponent } from './components/filter-select/filter-select.
 import { CountryDetailsComponent } from './components/countries/country-detail/country-details.component';
 import { NameListPipe } from './shared/pipes/name-list/name-list.pipe';
 import { CountryFlagComponent } from './components/countries/country-flag/country-flag.component';
+import { CountryCardPopupDirective } from './shared/directives/country-card-popup/country-card-popup.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CountryFlagComponent } from './components/countries/country-flag/countr
     CountryDetailsComponent,
     NameListPipe,
     CountryFlagComponent,
+    CountryCardPopupDirective,
   ],
   imports: [
     BrowserModule,

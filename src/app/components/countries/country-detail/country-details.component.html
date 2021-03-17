@@ -35,9 +35,14 @@
       <ul class="border-countries-list">
         <li *ngFor="let borderCountry of borderCountries">
           <a class="border-countries-link"
-             [routerLink]="['/country', borderCountry.alpha3Code]">{{ borderCountry.name }}</a>
+             [routerLink]="['/country', borderCountry.alpha3Code]"
+             appCountryCardPopup
+             [viewContainerRef]="anchor"
+             [country]="borderCountry">{{ borderCountry.name }}</a>
         </li>
       </ul>
+      <ng-template class="countryCardPopup"
+                   #countryCardPopupAnchor></ng-template>
     </section>
 
   </ng-container>
