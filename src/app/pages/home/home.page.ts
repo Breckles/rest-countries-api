@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { CountriesService } from 'src/app/components/countries/countries.service';
 import { Country } from 'src/app/components/countries/models/country.model';
 import { FilterSelectComponent } from 'src/app/components/filter-select/filter-select.component';
@@ -15,13 +21,31 @@ export class HomePageComponent implements OnInit {
   @ViewChild(SearchBarComponent)
   searchBarComponent!: SearchBarComponent;
 
-  countries!: Country[];
+  private countries!: Country[];
+  private countriesPerRender = 20;
+  displayCountries!: Country[];
 
-  constructor(private countriesService: CountriesService) {}
+  constructor(
+    private countriesService: CountriesService,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.countriesService.getAllCountries().then((countries: Country[]) => {
       this.countries = countries;
+      this.displayCountries = this.countries.slice(0, this.countriesPerRender);
+    });
+
+    this.renderer.listen('window', 'scroll', () => {
+      if (
+        document.documentElement.scrollTop >=
+        document.documentElement.scrollHeight - window.innerHeight - 200
+      ) {
+        this.displayCountries = this.countries.slice(
+          0,
+          this.displayCountries.length + this.countriesPerRender
+        );
+      }
     });
   }
 
@@ -31,8 +55,6 @@ export class HomePageComponent implements OnInit {
   }
 
   filterCountriesByRegion(region: string) {
-    console.log(region);
-
     if (region === 'All') {
       this.countriesService.getAllCountries().then((countries: Country[]) => {
         this.countries = countries;
@@ -43,4 +65,7 @@ export class HomePageComponent implements OnInit {
 
     this.searchBarComponent.reset();
   }
+
+  @HostListener('scroll', ['$event'])
+  renderMoreCountries(event: Event) {}
 }

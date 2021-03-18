@@ -1,6 +1,6 @@
 <div class="countries-component-wrapper">
   <ul class="countries-list">
-    <li *ngFor="let country of displayCountries">
+    <li *ngFor="let country of countries">
       <a [routerLink]="['/country', country.alpha3Code]">
         <app-country-card [country]="country"></app-country-card>
       </a>

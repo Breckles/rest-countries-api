@@ -1,12 +1,12 @@
 <div id="home-page-component-wrapper">
-  <ng-container *ngIf="countries; else loading">
+  <ng-container *ngIf="displayCountries; else loading">
     <div class="list-manipulators-container">
       <app-search-bar (onSearch)="filterCountriesByName($event)"></app-search-bar>
       <app-filter-select [filterField]="'Region'"
                          [filterFieldOptions]="['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania']"
                          (filterFieldOptionSelected)="filterCountriesByRegion($event)"></app-filter-select>
     </div>
-    <app-countries [countries]="countries"></app-countries>
+    <app-countries [countries]="displayCountries"></app-countries>
   </ng-container>
   <ng-template #loading>
     <div class="loading-wrapper">Loading</div>

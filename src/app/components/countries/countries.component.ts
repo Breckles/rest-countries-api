@@ -9,23 +9,20 @@ import { Country } from './models/country.model';
 export class CountriesComponent implements OnInit, OnChanges {
   @Input()
   public countries!: Country[];
-  public displayCountries!: Country[];
-  private displayIndex = 10;
 
   constructor() {}
 
   ngOnChanges(): void {
-    if (!this.countries) {
-      throw new Error("An argument for 'countries' must be provided");
-    }
-
-    this.displayCountries = this.countries.slice(0, this.displayIndex);
-  }
-
-  ngOnInit(): void {
     // if (!this.countries) {
     //   throw new Error("An argument for 'countries' must be provided");
     // }
+    // this.countries = this.countries.slice(0, this.displayIndex);
+  }
+
+  ngOnInit(): void {
+    if (!this.countries) {
+      throw new Error("An argument for 'countries' must be provided");
+    }
     // this.displayCountries.push(...this.countries.slice(0, this.displayIndex));
   }
 }
