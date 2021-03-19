@@ -52,6 +52,7 @@ export class HomePageComponent implements OnInit {
   filterCountriesByName(name: string) {
     this.countries = this.countriesService.getCountriesByName(name);
     this.regionFilterSelectComponent.reset();
+    this.displayCountries = this.countries.slice(0, this.countriesPerRender);
   }
 
   filterCountriesByRegion(region: string) {
@@ -64,6 +65,7 @@ export class HomePageComponent implements OnInit {
     }
 
     this.searchBarComponent.reset();
+    this.displayCountries = this.countries.slice(0, this.countriesPerRender);
   }
 
   @HostListener('scroll', ['$event'])
