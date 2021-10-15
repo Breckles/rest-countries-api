@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'nameList',
+  name: 'currencyList',
 })
-export class NameListPipe implements PipeTransform {
+export class CurrencyListPipe implements PipeTransform {
   /**
    * Create a string that is a comma separated list of name properties of the objects passed in as an array
    * @param {any[]} objects An array of objects. The objects must contain a 'name' property that is a string

@@ -1,20 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Currency } from '../../../components/countries/models/currency.model';
-import { Language } from '../../../components/countries/models/language.model';
+import { Currencies } from '../../../components/countries/models/currencies.model';
+import { Languages } from '../../../components/countries/models/languages.model';
 
 export interface RestCountriesAPIResponse {
-  readonly flag: string;
-  readonly name: string;
-  readonly nativeName: string;
-  readonly alpha3Code: string;
+  readonly flags: { png: string; svg: string };
+  readonly name: {
+    common: string;
+    official: string;
+    nativeName: { [abbr: string]: { official: string; common: string } };
+  };
+  readonly cca3: string;
   readonly population: number;
   readonly region: string;
   readonly subregion: string;
-  readonly capital: string;
-  readonly topLevelDomain: string[];
-  readonly currencies: Currency[];
-  readonly languages: Language[];
+  readonly capital: string[];
+  readonly currencies: Currencies;
+  readonly languages: Languages;
   readonly borders: string[];
 }
 
@@ -22,7 +24,7 @@ export interface RestCountriesAPIResponse {
   providedIn: 'root',
 })
 export class DataService {
-  private rootURL = 'https://restcountries.eu/rest/v2/';
+  private rootURL = 'https://restcountries.com/v3.1/';
 
   constructor(private http: HttpClient) {}
 
@@ -30,9 +32,11 @@ export class DataService {
    *
    * @param {string} apiEndPoint The API endpoint to append to the API root URL.
    * Must not include a leading forward slash (eg. 'endpoint' and NOT
-   * '/endpoint'). Current root URL is https://restcountries.eu/rest/v2/
+   * '/endpoint'). Current root URL is https://restcountries.com/v3.1/
    */
   public getCountries(apiEndPoint: string) {
+    console.log(`${this.rootURL}${apiEndPoint}`);
+
     return this.http
       .get<RestCountriesAPIResponse[]>(`${this.rootURL}${apiEndPoint}`)
       .toPromise();

@@ -1,13 +1,11 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-
-import { of } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 import {
   DataService,
   RestCountriesAPIResponse,
-} from 'src/app/shared/data.service';
+} from 'src/app/shared/services/data/data.service';
 import { CountriesService } from './countries.service';
 import { Country } from './models/country.model';
-import { Currency } from './models/currency.model';
+import { Currencies } from './models/currencies.model';
 import { Language } from './models/language.model';
 
 describe('CountriesService', () => {
@@ -25,7 +23,6 @@ describe('CountriesService', () => {
       topLevelDomain: ['.de'],
       currencies: [
         {
-          code: 'EUR',
           name: 'Euro',
           symbol: '€',
         },
@@ -52,7 +49,6 @@ describe('CountriesService', () => {
       topLevelDomain: ['.us'],
       currencies: [
         {
-          code: 'USD',
           name: 'United States dollar',
           symbol: '$',
         },
@@ -98,7 +94,7 @@ describe('CountriesService', () => {
         'Western Europe',
         'Berlin',
         ['.de'],
-        [new Currency('EUR', 'Euro', '€')],
+        [new Currencies('Euro', '€')],
         [new Language('de', 'deu', 'German', 'Deutsch')],
         ['AUT', 'BEL', 'CZE', 'DNK', 'FRA', 'LUX', 'NLD', 'POL', 'CHE']
       ),
@@ -112,13 +108,22 @@ describe('CountriesService', () => {
         'Northern America',
         'Washington, D.C.',
         ['.us'],
-        [new Currency('USD', 'United States dollar', '$')],
+        [new Currencies('United States dollar', '$')],
         [new Language('en', 'eng', 'English', 'English')],
         ['CAN', 'MEX']
       ),
     ];
-    countriesService.countriesSubject.subscribe((countries: Country[]) => {
-      expect(countries).toEqual(expectedCountries);
-    });
+
+    const actualCountries = await countriesService.getAllCountries();
+
+    if (!actualCountries) {
+      throw new Error('No countries returned from getAllCounties');
+    }
+
+    expect(actualCountries).toEqual(expectedCountries);
+
+    // countriesService.countriesSubject.subscribe((countries: Country[]) => {
+    //   expect(countries).toEqual(expectedCountries);
+    // });
   });
 });

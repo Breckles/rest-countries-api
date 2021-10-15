@@ -76,8 +76,6 @@ export class CountryCardPopupDirective implements OnInit, OnDestroy {
         'bottom',
         `${window.innerHeight - this.hostElRef.nativeElement.offsetTop + 5}px`
       );
-      console.log(event.target);
-      console.log(this.componentRef.location);
     }
   }
 
@@ -87,7 +85,6 @@ export class CountryCardPopupDirective implements OnInit, OnDestroy {
       this.componentRef.destroy();
       this.componentRef = null;
     }
-    console.log(event.target);
   }
 
   ngOnDestroy(): void {

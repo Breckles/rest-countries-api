@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   {
-    path: 'country/:alpha3Code',
+    path: 'country/:cca3',
     component: CountryPageComponent,
   },
 ];

@@ -19,24 +19,27 @@ export class CountryPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const countryCode: string = this.route.snapshot.paramMap.get('alpha3Code')!;
+    const countryCode: string = this.route.snapshot.paramMap.get('cca3')!;
     this.setCountry(countryCode);
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      const countryCode: string = paramMap.get('alpha3Code')!;
+      const countryCode: string = paramMap.get('cca3')!;
       this.setCountry(countryCode);
     });
   }
 
-  private setCountry(alpha3Code: string) {
+  private setCountry(cca3Code: string) {
     this.countriesService
-      .getCountriesByAlpha3Codes([alpha3Code])
+      .getCountriesByCCA3([cca3Code])
       .then((countries: Country[]) => {
         if (countries.length > 0) {
           this.country = countries[0];
         } else {
-          throw new Error(`No country found for country code: ${alpha3Code}`);
+          throw new Error(`No country found for country code: ${cca3Code}`);
         }
+      })
+      .catch((error) => {
+        throw new Error('dd');
       });
   }
 }

@@ -1,20 +1,19 @@
 import { RestCountriesAPIResponse } from 'src/app/shared/services/data/data.service';
 import { Currency } from './currency.model';
 import { Language } from './language.model';
+import { Languages } from './languages.model';
 
 export class Country {
   constructor(
     readonly flag: string,
     readonly name: string,
-    readonly nativeName: string,
-    readonly alpha3Code: string,
+    readonly cca3: string,
     readonly population: number,
     readonly region: string,
     readonly subregion: string,
     readonly capital: string,
-    readonly topLevelDomain: string[],
     readonly currencies: Currency[],
-    readonly languages: Language[],
+    readonly languages: string[],
     /**
      * @param borders A list of alpha3Codes for bordering countries
      */
@@ -23,38 +22,40 @@ export class Country {
 
   static convertJSONToCountry(JSONCountry: RestCountriesAPIResponse) {
     const currencies: Currency[] = [];
-    const languages: Language[] = [];
+    const languages: string[] = [];
 
-    JSONCountry.currencies.forEach((currency) => {
-      currencies.push(
-        new Currency(currency.code, currency.name, currency.symbol)
-      );
-    });
+    for (const code in JSONCountry.currencies) {
+      if (Object.prototype.hasOwnProperty.call(JSONCountry.currencies, code)) {
+        const element = JSONCountry.currencies[code];
+        currencies.push({ name: element.name, symbol: element.symbol });
+      }
+    }
 
-    JSONCountry.languages.forEach((language) => {
-      languages.push(
-        new Language(
-          language.iso639_1,
-          language.iso639_2,
-          language.name,
-          language.nativeName
-        )
-      );
-    });
+    for (const iso639_2 in JSONCountry.languages) {
+      if (
+        Object.prototype.hasOwnProperty.call(JSONCountry.languages, iso639_2)
+      ) {
+        const element = JSONCountry.languages[iso639_2];
+        // languages = { ...languages, iso639_2: element };
+        languages.push(element);
+      }
+    }
+    if (JSONCountry.cca3 === 'PRY') {
+    }
+    console.log(JSONCountry);
 
-    return new Country(
-      JSONCountry.flag,
-      JSONCountry.name,
-      JSONCountry.nativeName,
-      JSONCountry.alpha3Code,
+    const newCountry = new Country(
+      JSONCountry.flags.svg,
+      JSONCountry.name.official,
+      JSONCountry.cca3,
       JSONCountry.population,
       JSONCountry.region,
       JSONCountry.subregion,
-      JSONCountry.capital,
-      JSONCountry.topLevelDomain,
+      JSONCountry.capital ? JSONCountry.capital[0] : '',
       currencies,
       languages,
       JSONCountry.borders
     );
+    return newCountry;
   }
 }

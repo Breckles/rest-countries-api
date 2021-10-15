@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Country } from '../models/country.model';
-import { Currency } from '../models/currency.model';
+import { Currencies } from '../models/currencies.model';
 import { Language } from '../models/language.model';
 
 import { CountryCardComponent } from './country-card.component';
@@ -28,7 +28,7 @@ describe('CountryCardComponent', () => {
       'subregion2',
       'capital2',
       ['tld2'],
-      [new Currency('code2', 'name2', 'symbol2')],
+      [new Currencies('name2', 'symbol2')],
       [new Language('iso639_1', 'iso639_2', 'name', 'nativeName')],
       ['border1', 'border2']
     );

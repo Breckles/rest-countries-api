@@ -37,7 +37,7 @@ export class CountriesService {
       const countries: Country[] = [];
 
       const restCountriesAPIResponse = await this.dataService.getCountries(
-        'all?fields=flag;name;nativeName;alpha3Code;population;region;subregion;capital;topLevelDomain;currencies;languages;borders'
+        'all'
       );
 
       restCountriesAPIResponse.forEach((countryJSON) => {
@@ -51,83 +51,6 @@ export class CountriesService {
     } catch (error) {
       throw error;
     }
-
-    // Hardcoding data to avoid constant http requests while styling components
-    // and refreshing the page
-    /////////////////////////////////
-    // let mockJSONCountries: RestCountriesAPIResponse[] = [
-    //   {
-    //     flag: 'https://restcountries.eu/data/deu.svg',
-    //     name: 'Germany',
-    //     nativeName: 'Deutschland',
-    //     alpha3Code: 'DEU',
-    //     population: 81770900,
-    //     region: 'Europe',
-    //     subregion: 'Western Europe',
-    //     capital: 'Berlin',
-    //     topLevelDomain: ['.de'],
-    //     currencies: [
-    //       {
-    //         code: 'EUR',
-    //         name: 'Euro',
-    //         symbol: '€',
-    //       },
-    //     ],
-    //     languages: [
-    //       {
-    //         iso639_1: 'de',
-    //         iso639_2: 'deu',
-    //         name: 'German',
-    //         nativeName: 'Deutsch',
-    //       },
-    //     ],
-    //     borders: [
-    //       'AUT',
-    //       'BEL',
-    //       'CZE',
-    //       'DNK',
-    //       'FRA',
-    //       'LUX',
-    //       'NLD',
-    //       'POL',
-    //       'CHE',
-    //     ],
-    //   },
-    //   {
-    //     flag: 'https://restcountries.eu/data/usa.svg',
-    //     name: 'United States of America',
-    //     nativeName: 'United States',
-    //     alpha3Code: 'USA',
-    //     population: 323947000,
-    //     region: 'Americas',
-    //     subregion: 'Northern America',
-    //     capital: 'Washington, D.C.',
-    //     topLevelDomain: ['.us'],
-    //     currencies: [
-    //       {
-    //         code: 'USD',
-    //         name: 'United States dollar',
-    //         symbol: '$',
-    //       },
-    //     ],
-    //     languages: [
-    //       {
-    //         iso639_1: 'en',
-    //         iso639_2: 'eng',
-    //         name: 'English',
-    //         nativeName: 'English',
-    //       },
-    //     ],
-    //     borders: ['CAN', 'MEX'],
-    //   },
-    // ];
-    // let mockResponseCountries: Country[] = [];
-    // mockJSONCountries.forEach((country) => {
-    //   mockResponseCountries.push(Country.convertJSONToCountry(country));
-    // });
-    // this.countries = mockResponseCountries;
-    // return [...this.countries];
-    ////////////////////////////////////////////////////////////
   }
 
   public getCountriesByName(name: string): Country[] {
@@ -144,56 +67,14 @@ export class CountriesService {
     );
   }
 
-  public async getCountriesByAlpha3Codes(
-    alpha3Codes: string[]
-  ): Promise<Country[]> {
+  public async getCountriesByCCA3(CCA3Codes: string[]): Promise<Country[]> {
     return this.getAllCountries().then((countries: Country[]) => {
-      return countries.filter((country: Country) =>
-        alpha3Codes.includes(country.alpha3Code)
-      );
+      return countries.filter((country: Country) => {
+        if (CCA3Codes) {
+          return CCA3Codes.includes(country.cca3);
+        }
+        return false;
+      });
     });
-
-    // // for testing
-    // let mockJSONCountries: RestCountriesAPIResponse[] = [
-    //   {
-    //     flag: 'https://restcountries.eu/data/deu.svg',
-    //     name: 'Germany',
-    //     nativeName: 'Deutschland',
-    //     alpha3Code: 'DEU',
-    //     population: 81770900,
-    //     region: 'Europe',
-    //     subregion: 'Western Europe',
-    //     capital: 'Berlin',
-    //     topLevelDomain: ['.de'],
-    //     currencies: [
-    //       {
-    //         code: 'EUR',
-    //         name: 'Euro',
-    //         symbol: '€',
-    //       },
-    //     ],
-    //     languages: [
-    //       {
-    //         iso639_1: 'de',
-    //         iso639_2: 'deu',
-    //         name: 'German',
-    //         nativeName: 'Deutsch',
-    //       },
-    //     ],
-    //     borders: [
-    //       'AUT',
-    //       'BEL',
-    //       'CZE',
-    //       'DNK',
-    //       'FRA',
-    //       'LUX',
-    //       'NLD',
-    //       'POL',
-    //       'CHE',
-    //     ],
-    //   },
-    // ];
-    // // for testing
-    // return mockJSONCountries;
   }
 }

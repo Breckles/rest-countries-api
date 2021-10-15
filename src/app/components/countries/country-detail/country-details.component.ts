@@ -32,10 +32,10 @@ export class CountryDetailsComponent implements OnChanges {
     }
 
     this.countriesService
-      .getCountriesByAlpha3Codes(this.country.borders)
+      .getCountriesByCCA3(this.country.borders)
       .then(() => {
         this.countriesService
-          .getCountriesByAlpha3Codes(this.country.borders)
+          .getCountriesByCCA3(this.country.borders)
           .then((borderCountries: Country[]) => {
             this.borderCountries = borderCountries;
           });

@@ -1,8 +1,8 @@
-import { ListPipe } from './name-list.pipe';
+import { CurrencyListPipe } from './currency-list.pipe';
 
 describe('ListPipe', () => {
   it('create an instance', () => {
-    const pipe = new ListPipe();
+    const pipe = new CurrencyListPipe();
     expect(pipe).toBeTruthy();
   });
 });

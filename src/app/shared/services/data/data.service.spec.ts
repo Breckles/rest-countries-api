@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Currency } from '../../../components/countries/models/currency.model';
+import { Currencies } from '../../../components/countries/models/currencies.model';
 import { Language } from '../../../components/countries/models/language.model';
 
 import { DataService, RestCountriesAPIResponse } from './data.service';
@@ -32,7 +32,7 @@ describe('DataService', () => {
         subregion: 'subregion',
         capital: 'capital',
         topLevelDomain: ['tld'],
-        currencies: [new Currency('code', 'name', 'symbol')],
+        currencies: [new Currencies('name', 'symbol')],
         languages: [new Language('iso639_1', 'iso639_2', 'name', 'nativeName')],
         borders: ['border1', 'border2'],
       },
@@ -46,7 +46,7 @@ describe('DataService', () => {
         subregion: 'subregion2',
         capital: 'capital2',
         topLevelDomain: ['tld2'],
-        currencies: [new Currency('code2', 'name2', 'symbol2')],
+        currencies: [new Currencies('name2', 'symbol2')],
         languages: [new Language('iso639_1', 'iso639_2', 'name', 'nativeName')],
         borders: ['border1', 'border2'],
       },

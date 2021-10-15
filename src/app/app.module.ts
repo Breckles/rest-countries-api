@@ -14,9 +14,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CountriesComponent } from './components/countries/countries.component';
 import { FilterSelectComponent } from './components/filter-select/filter-select.component';
 import { CountryDetailsComponent } from './components/countries/country-detail/country-details.component';
-import { NameListPipe } from './shared/pipes/name-list/name-list.pipe';
 import { CountryFlagComponent } from './components/countries/country-flag/country-flag.component';
 import { CountryCardPopupDirective } from './shared/directives/country-card-popup/country-card-popup.directive';
+import { CurrencyListPipe } from './shared/pipes/currency-list/currency-list.pipe';
+import { LanguageListPipe } from './shared/pipes/language-list/language-list.pipe';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import { CountryCardPopupDirective } from './shared/directives/country-card-popu
     CountriesComponent,
     FilterSelectComponent,
     CountryDetailsComponent,
-    NameListPipe,
+    CurrencyListPipe,
     CountryFlagComponent,
     CountryCardPopupDirective,
+    LanguageListPipe,
   ],
   imports: [
     BrowserModule,
