@@ -17,7 +17,7 @@ export class Country {
     /**
      * @param borders A list of alpha3Codes for bordering countries
      */
-    readonly borders: string[]
+    readonly borders: string[],
   ) {}
 
   static convertJSONToCountry(JSONCountry: RestCountriesAPIResponse) {
@@ -42,7 +42,6 @@ export class Country {
     }
     if (JSONCountry.cca3 === 'PRY') {
     }
-    console.log(JSONCountry);
 
     const newCountry = new Country(
       JSONCountry.flags.svg,
@@ -54,7 +53,7 @@ export class Country {
       JSONCountry.capital ? JSONCountry.capital[0] : '',
       currencies,
       languages,
-      JSONCountry.borders
+      JSONCountry.borders,
     );
     return newCountry;
   }

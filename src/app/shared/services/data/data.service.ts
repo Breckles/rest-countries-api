@@ -3,6 +3,19 @@ import { Injectable } from '@angular/core';
 import { Currencies } from '../../../components/countries/models/currencies.model';
 import { Languages } from '../../../components/countries/models/languages.model';
 
+const requestFields: string[] = [
+  'flags',
+  'name',
+  'cca3',
+  'population',
+  'region',
+  'subregion',
+  'capital',
+  'currencies',
+  'languages',
+  'borders',
+];
+
 export interface RestCountriesAPIResponse {
   readonly flags: { png: string; svg: string };
   readonly name: {
@@ -35,10 +48,14 @@ export class DataService {
    * '/endpoint'). Current root URL is https://restcountries.com/v3.1/
    */
   public getCountries(apiEndPoint: string) {
-    console.log(`${this.rootURL}${apiEndPoint}`);
+    console.log(
+      `${this.rootURL}${apiEndPoint}?fields=${requestFields.join(',')}`,
+    );
 
     return this.http
-      .get<RestCountriesAPIResponse[]>(`${this.rootURL}${apiEndPoint}`)
+      .get<
+        RestCountriesAPIResponse[]
+      >(`${this.rootURL}${apiEndPoint}?fields=${requestFields.join(',')}`)
       .toPromise();
   }
 }

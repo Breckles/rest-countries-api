@@ -36,9 +36,8 @@ export class CountriesService {
     try {
       const countries: Country[] = [];
 
-      const restCountriesAPIResponse = await this.dataService.getCountries(
-        'all'
-      );
+      const restCountriesAPIResponse =
+        await this.dataService.getCountries('all');
 
       restCountriesAPIResponse.forEach((countryJSON) => {
         countries.push(Country.convertJSONToCountry(countryJSON));
@@ -56,14 +55,14 @@ export class CountriesService {
   public getCountriesByName(name: string): Country[] {
     const lowerCaseName = name.toLowerCase();
     return this.countries.filter((country: Country) =>
-      country.name.toLowerCase().includes(lowerCaseName)
+      country.name.toLowerCase().includes(lowerCaseName),
     );
   }
 
   public getCountriesByRegion(region: string): Country[] {
     const lowerCaseRegion = region.toLowerCase();
     return this.countries.filter(
-      (country: Country) => country.region.toLowerCase() === lowerCaseRegion
+      (country: Country) => country.region.toLowerCase() === lowerCaseRegion,
     );
   }
 
